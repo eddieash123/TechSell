@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-header></app-header>
+<body>
+    <div class="items-container">
+        <h2>Your Cart</h2>
+        <div class="items" *ngFor="let items of cartItems">
+            <p>{{items.productName}}</p>
+            <p>{{items.price}}</p>
+        </div>
+    </div>
+    <div class="order-sum">
+        <h3>Order Summary</h3>
+        <div class="prices">
+            <div class="prices-text">
+                <p style="font-size: larger;" id="p">Price: </p>
+                <p style="font-size: larger;" id="p">Shipping: </p>
+                <p style="font-size: larger;">Tax: </p>
+            </div>
+            <div class="prices-numbers">
+                <p style="font-size: larger;" id="p">$150</p>
+                <p style="font-size: larger;" id="p">$15 </p>
+                <p style="font-size: larger;">$20 </p>
+            </div>
+        </div>
+        <div class="total" style="font-size: larger; font-weight: 600;"> 
+            <div class="total-text">
+                <p>Total:</p>
+            </div>
+            <div class="total-number">
+                <p>$185</p>
+            </div>
+        </div>
+        <button class="checkout-btn">Checkout</button>
+    </div>
+</body>
+<app-footer></app-footer>
+</html>

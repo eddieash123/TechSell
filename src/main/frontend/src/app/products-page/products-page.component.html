@@ -1,0 +1,150 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<header><app-header></app-header></header>
+<body>
+  <div class="body-non-header">
+    <div class="results">
+        <h2>Search results for "{{searchResult}}"</h2>
+    </div>
+    <div class="container col-12">
+        <div class="filter-container">
+          <p class="filter">Filter</p>
+          <div class="filter-contents">
+            <p>Color</p>
+            <form> <!-- values just to make the ngModels different so reset functionality works properly -->
+                <label>
+                  <input type="radio" name="color" [(ngModel)]="colorOption" [value]="'option1'" (click)="filterByColor('White')">
+                  White
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="color" [(ngModel)]="colorOption" [value]="'option2'" (click)="filterByColor('Grey')">
+                  Grey
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="color" [(ngModel)]="colorOption" [value]="'option3'" (click)="filterByColor('Blue')">
+                  Blue
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="color" [(ngModel)]="colorOption" [value]="'option4'" (click)="filterByColor('Black')">
+                  Black
+                </label>
+            </form>
+            <br>
+            <p>Price</p>
+            <form>
+                <label>
+                  <input type="radio" name="price" [(ngModel)]="priceOption" [value]="'option5'" (click)="filterByPrice(0, 200)">
+                  &lt; $200
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="price" [(ngModel)]="priceOption" [value]="'option6'" (click)="filterByPrice(200, 500)">
+                  $200-$500
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="price" [(ngModel)]="priceOption" [value]="'option7'" (click)="filterByPrice(500, 1000)">
+                  $500-$1000
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="price" [(ngModel)]="priceOption" [value]="'option8'" (click)="filterByPrice(1000, 2000)">
+                  &gt; $1000
+                </label>
+                <br><br>
+                <!-- <button class="applyBtn">Apply</button> 
+                <br> -->
+                <button class="resetBtn" (click)="resetBtn()">Reset</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="mobile-filter-container">
+          <button data-bs-toggle="modal" data-bs-target="#myModal" class="filter btnM">Filter</button>
+          <button class="reset btnM" (click)="resetBtn()">Reset</button>
+        </div>
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Filters</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="filter-contents">
+                  <p>Color</p>
+                  <form> <!-- values just to make the ngModels different so reset functionality works properly -->
+                      <label>
+                        <input type="radio" name="color" [(ngModel)]="colorOption" [value]="'option1'" (click)="filterByColor('White')">
+                        White
+                      </label>
+                      <br>
+                      <label>
+                        <input type="radio" name="color" [(ngModel)]="colorOption" [value]="'option2'" (click)="filterByColor('Grey')">
+                        Grey
+                      </label>
+                      <br>
+                      <label>
+                        <input type="radio" name="color" [(ngModel)]="colorOption" [value]="'option3'" (click)="filterByColor('Blue')">
+                        Blue
+                      </label>
+                      <br>
+                      <label>
+                        <input type="radio" name="color" [(ngModel)]="colorOption" [value]="'option4'" (click)="filterByColor('Black')">
+                        Black
+                      </label>
+                  </form>
+                  <br>
+                  <p>Price</p>
+                  <form>
+                      <label>
+                        <input type="radio" name="price" [(ngModel)]="priceOption" [value]="'option5'" (click)="filterByPrice(0, 200)">
+                        &lt; $200
+                      </label>
+                      <br>
+                      <label>
+                        <input type="radio" name="price" [(ngModel)]="priceOption" [value]="'option6'" (click)="filterByPrice(200, 500)">
+                        $200-$500
+                      </label>
+                      <br>
+                      <label>
+                        <input type="radio" name="price" [(ngModel)]="priceOption" [value]="'option7'" (click)="filterByPrice(500, 1000)">
+                        $500-$1000
+                      </label>
+                      <br>
+                      <label>
+                        <input type="radio" name="price" [(ngModel)]="priceOption" [value]="'option8'" (click)="filterByPrice(1000, 2000)">
+                        &gt; $1000
+                      </label>
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="reset btnM" (click)="resetBtn()">Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="products-container">
+            <div *ngFor="let product of products" class="products">
+              <img src={{product.img_url}} alt="img">
+              <p><b>{{product.name}}</b></p>
+              <p>${{product.price}}</p>
+              <button class="btn btn-primary" (click)="addToCart(product.name, product.price)">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <app-footer style="margin: 0;"></app-footer>
+</body>
+
+</html>
